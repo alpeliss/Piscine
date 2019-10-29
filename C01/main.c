@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 18:45:18 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/29 19:57:52 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:22:30 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,29 @@ void	ft_swap(int *a, int *b);
 void	ft_div_mod(int a, int b, int *div, int *mod);
 void	ft_ultimate_div_mod(int *a, int *b);
 void	ft_putstr(char *str);
+int		ft_strlen(char *str);
+void	ft_rev_int_tab(int *tab, int size);
 
-int main(void)
+void	r_tab(int *tab, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		printf("%d ", tab[i]);
+		i++;
+	}
+	printf("\n");
+}
+
+int 	main(void)
 {
 	int	*p;
 	int *q;
 	int	*div;
 	int	*mod;
+	int	tab[6];
 	int	a;
 	int	b;
 	int	c;
@@ -53,5 +69,16 @@ int main(void)
 	ft_ultimate_div_mod(p, q);
 	printf("p = %d et q = %d\n", *p, *q);
 	ft_putstr("Bonjour je suis un calamar\n");
+	printf("Bonjour -> %d\n", ft_strlen("Bonjour"));
+	tab[0] = 45;
+	tab[1] = 4;
+	tab[2] = 145;
+	tab[3] = 78;
+	tab[4] = -15;
+	//tab[5] = 15;
+	r_tab(tab, 5);
+	ft_rev_int_tab(tab, 5);
+	r_tab(tab, 5);
+	printf("bob\n");
 	return (0);
 }

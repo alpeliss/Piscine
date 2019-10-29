@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 13:55:40 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/29 18:25:06 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/29 20:02:01 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ int		main(void)
 	write(1, "\t", 1);
 	ft_putnbr(-19);
 	write(1, "\n", 1);*/
-	ft_print_combn(9);
+	ft_print_combn(7);
 	return (0);
 }
