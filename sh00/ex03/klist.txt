@@ -1,0 +1,5 @@
+Credentials cache: API:66203
+        Principal: alpeliss@S19.BE
+
+  Issued                Expires               Principal
+Oct 28 10:08:22 2019  Oct 28 20:08:15 2019  krbtgt/S19.BE@S19.BE
