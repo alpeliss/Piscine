@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 16:01:22 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/30 16:04:20 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int		ft_str_is_lowercase(char *str);
 int		ft_str_is_uppercase(char *str);
 int		ft_str_is_printable(char *str);
 char	*ft_strupcase(char *str);
+char	*ft_strlowcase(char *str);
 
 int		main(void)
 {
@@ -53,5 +54,6 @@ int		main(void)
 	printf("%d%d",  ft_str_is_printable(""),  ft_str_is_printable("134didqw$%^*9h;'{}|]["));
 	printf("%d\n", ft_str_is_printable("\n"));
 	printf("%s->", dest2);
-	printf("%s\n",  ft_strupcase(dest2));
+	printf("%s->",  ft_strupcase(dest2));
+	printf("%s\n",  ft_strlowcase(dest2));
 }
