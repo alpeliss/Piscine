@@ -1,47 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 16:05:25 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 19:14:03 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/10/30 19:02:17 by alpeliss          #+#    #+#             */
+/*   Updated: 2019/10/30 19:14:37 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		is_small(char c)
+#include "unistd.h"
+
+int		is_printable(char c)
 {
-	if (c >= 'a' && c <= 'z')
+	if (c > 31 && c < 127)
 		return (1);
 	return (0);
 }
 
-int		is_al_num(char c)
+void	hexa_print(char c)
 {
-	if (c >= 'A' && c <= 'Z')
-		return (1);
-	else if (c >= 'a' && c <= 'z')
-		return (1);
-	else if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
+	char	e;
+
+	write(1, "\\", 1);
+	e = (c / 16 < 10) ? '0' + c / 16 : 'a' + c / 16 - 10;
+	write(1, &e, 1);
+	e = (c % 16 < 10) ? '0' + c % 16 : 'a' + c % 16 - 10;
+	write(1, &e, 1);
 }
 
-char	*ft_strcapitalize(char *str)
+void	ft_putstr_non_printable(char *str)
 {
 	int	i;
 
-	if (!str)
-		return (str);
-	if (is_small(str[0]))
-		str[0] -= 32;
-	i = 1;
-	while (str[i])
+	if (str)
 	{
-		if (is_small(str[i]) && !(is_al_num(str[i - 1])))
-			str[i] -= 32;
-		i++;
+		i = 0;
+		while (str[i])
+		{
+			if (is_printable(str[i]))
+				write(1, &str[i], 1);
+			else
+				hexa_print(str[i]);
+			i++;
+		}
 	}
-	return (str);
 }

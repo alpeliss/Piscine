@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 18:59:10 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/30 19:12:49 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char			*ft_strupcase(char *str);
 char			*ft_strlowcase(char *str);
 char			*ft_strcapitalize(char *str);
 unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+void			ft_putstr_non_printable(char *str);
 
 int		main(void)
 {
@@ -73,6 +74,7 @@ int		main(void)
 	printf("\nsrc->%s\ndest->%s\n", src2, dest);*/
 	i = strlcpy(dest, src2, 78);
 	j = ft_strlcpy(dest1, NULL, 78);
-	printf("%d  ->%s\n", i, dest);
-	printf("%d  ->%s", j, dest1);
+//	printf("%d  ->%s\n", i, dest);
+//	printf("%d  ->%s", j, dest1);
+	ft_putstr_non_printable("Coucou\ntu\tvas bien ?");
 }
