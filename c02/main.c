@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 17:45:31 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/30 18:59:10 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,31 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 int		main(void)
 {
 	char	*dest;
+	char	*dest1;
 	char	*dest2;
 	char	*src;
+	char	*src1;
 	char	*src2;
 	int		i;
+	int		j;
 
 	src2 = "Une courte phrase";
+	src1 = "Une courte phrase";
 	src = "42mots Cinquante+Et+Un Quarante-Deux;";
 	dest = (char *)malloc(30 * sizeof(char));
+	dest1 = (char *)malloc(30 * sizeof(char));
 	ft_strcpy(dest, src);
-	printf("-%s-\n", dest);
+	ft_strcpy(dest1, src);
+//	printf("-%s-\n", dest);
 	dest2 = (char *)malloc(30 * sizeof(char));
 	ft_strncpy(dest2, src2, 4);
-	printf("-%s-\n", dest2);	
+//	printf("-%s-\n", dest2);	
 	ft_strncpy(dest2, src2, 0);
-	printf("-%s-\n", dest2);
+//	printf("-%s-\n", dest2);
 	ft_strncpy(dest2, src2, 29);
-	printf("-%s-\n", dest2);	
+//	printf("-%s-\n", dest2);	
 	ft_strncpy(dest2, NULL, 29);
-	printf("-%s-\n", dest2);
+/*	printf("-%s-\n", dest2);
 	printf("%d%d", ft_str_is_alpha("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"),ft_str_is_alpha(""));
 	printf("%d%d%d\n", ft_str_is_alpha("!"), ft_str_is_alpha("["), ft_str_is_alpha("~"));
 	printf("%d%d", ft_str_is_numeric(""), ft_str_is_numeric("0123456789"));
@@ -60,11 +66,13 @@ int		main(void)
 	printf("%d\n", ft_str_is_printable("\n"));
 	printf("->%s\n", dest);
 	printf("->%s\n",  ft_strupcase(dest));
-	printf("->%s\n",  ft_strlowcase(dest));
+	printf("->%s\n",  ft_strlowcase(dest));*/
 	ft_strupcase("");
 	ft_strlowcase("");
-	printf("->%s", ft_strcapitalize(dest));
-	printf("src->%s\ndest->%s\n", src, dest);
-	i = strlcpy(dest, src, 0);
-	printf("%d  ->%s", i, dest);
+/*	printf("->%s", ft_strcapitalize(dest));
+	printf("\nsrc->%s\ndest->%s\n", src2, dest);*/
+	i = strlcpy(dest, src2, 78);
+	j = ft_strlcpy(dest1, NULL, 78);
+	printf("%d  ->%s\n", i, dest);
+	printf("%d  ->%s", j, dest1);
 }
