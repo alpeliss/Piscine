@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 15:16:31 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/30 15:33:24 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n);
 int		ft_str_is_alpha(char *str);
 int		ft_str_is_numeric(char *str);
 int		ft_str_is_lowercase(char *str);
+int		ft_str_is_uppercase(char *str);
 
 int		main(void)
 {
@@ -39,11 +40,12 @@ int		main(void)
 	printf("-%s-\n", dest2);	
 	ft_strncpy(dest2, NULL, 29);
 	printf("-%s-\n", dest2);
-	printf("%d", ft_str_is_alpha("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"));
-	printf("%d", ft_str_is_alpha(""));
+	printf("%d%d", ft_str_is_alpha("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"),ft_str_is_alpha(""));
 	printf("%d%d%d\n", ft_str_is_alpha("!"), ft_str_is_alpha("["), ft_str_is_alpha("~"));
 	printf("%d%d", ft_str_is_numeric(""), ft_str_is_numeric("0123456789"));
 	printf("%d%d\n", ft_str_is_numeric("+"), ft_str_is_numeric(";"));
 	printf("%d%d",  ft_str_is_lowercase(""),  ft_str_is_lowercase("qwertyuiopasdfghjklzxcvbnm"));
-	printf("%d%d",  ft_str_is_lowercase("A"),  ft_str_is_lowercase("}"));
+	printf("%d%d\n",  ft_str_is_lowercase("A"),  ft_str_is_lowercase("}"));
+	printf("%d%d",  ft_str_is_uppercase(""),  ft_str_is_uppercase("QWERTYUIOPASDFGHJKLZXCVBNM"));
+	printf("%d%d\n",  ft_str_is_uppercase("!"),  ft_str_is_uppercase("v"));
 }
