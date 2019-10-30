@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 16:21:46 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/30 17:45:31 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,17 @@
 #include "stdlib.h"
 #include "string.h"
 
-char	*ft_strcpy(char *dest, char *src);
-char	*ft_strncpy(char *dest, char *src, unsigned int n);
-int		ft_str_is_alpha(char *str);
-int		ft_str_is_numeric(char *str);
-int		ft_str_is_lowercase(char *str);
-int		ft_str_is_uppercase(char *str);
-int		ft_str_is_printable(char *str);
-char	*ft_strupcase(char *str);
-char	*ft_strlowcase(char *str);
-char	*ft_strcapitalize(char *str);
+char			*ft_strcpy(char *dest, char *src);
+char			*ft_strncpy(char *dest, char *src, unsigned int n);
+int				ft_str_is_alpha(char *str);
+int				ft_str_is_numeric(char *str);
+int				ft_str_is_lowercase(char *str);
+int				ft_str_is_uppercase(char *str);
+int				ft_str_is_printable(char *str);
+char			*ft_strupcase(char *str);
+char			*ft_strlowcase(char *str);
+char			*ft_strcapitalize(char *str);
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
 
 int		main(void)
 {
@@ -31,6 +32,7 @@ int		main(void)
 	char	*dest2;
 	char	*src;
 	char	*src2;
+	int		i;
 
 	src2 = "Une courte phrase";
 	src = "42mots Cinquante+Et+Un Quarante-Deux;";
@@ -62,4 +64,7 @@ int		main(void)
 	ft_strupcase("");
 	ft_strlowcase("");
 	printf("->%s", ft_strcapitalize(dest));
+	printf("src->%s\ndest->%s\n", src, dest);
+	i = strlcpy(dest, src, 0);
+	printf("%d  ->%s", i, dest);
 }
