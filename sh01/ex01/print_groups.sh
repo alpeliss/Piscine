@@ -1,1 +1,1 @@
-id $FT_USER -Gn | sed  's/ /,/g' | tr -d '\n'
+groups $FT_USER  | sed  's/ /,/g' | tr -d '\n'
