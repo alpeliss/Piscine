@@ -6,13 +6,20 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:05:25 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 19:14:03 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/31 18:47:59 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		is_small(char c)
 {
 	if (c >= 'a' && c <= 'z')
+		return (1);
+	return (0);
+}
+
+int		is_big(char c)
+{
+	if (c >= 'A' && c <= 'Z')
 		return (1);
 	return (0);
 }
@@ -41,6 +48,8 @@ char	*ft_strcapitalize(char *str)
 	{
 		if (is_small(str[i]) && !(is_al_num(str[i - 1])))
 			str[i] -= 32;
+		if (is_big(str[i]) && is_al_num(str[i - 1]))
+			str[i] += 32;
 		i++;
 	}
 	return (str);

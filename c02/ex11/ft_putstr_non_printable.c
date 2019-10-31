@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 19:02:17 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 19:14:37 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/31 20:39:11 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,12 @@ int		is_printable(char c)
 	return (0);
 }
 
-void	hexa_print(char c)
+void	hexa_print(int c)
 {
 	char	e;
 
+	if (c < 0)
+		c = 256 + c;
 	write(1, "\\", 1);
 	e = (c / 16 < 10) ? '0' + c / 16 : 'a' + c / 16 - 10;
 	write(1, &e, 1);
@@ -42,7 +44,7 @@ void	ft_putstr_non_printable(char *str)
 			if (is_printable(str[i]))
 				write(1, &str[i], 1);
 			else
-				hexa_print(str[i]);
+				hexa_print((int)str[i]);
 			i++;
 		}
 	}

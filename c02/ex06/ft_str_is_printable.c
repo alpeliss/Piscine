@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 15:35:46 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/30 15:38:41 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/31 18:42:10 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_str_is_printable(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] >= 33 && str[i] <= 126)
+		if (str[i] >= 32 && str[i] <= 126)
 			i++;
 		else
 			return (0);
