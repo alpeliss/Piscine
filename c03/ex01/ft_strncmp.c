@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 16:41:32 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/31 17:42:05 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/10/31 17:34:45 by alpeliss          #+#    #+#             */
+/*   Updated: 2019/10/31 17:41:12 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string.h"
-#include "stdio.h"
-
-int ft_strcmp(char *s1, char *s2);
-int ft_strncmp(char *s1, char *s2, unsigned int n);
-
-int main(void)
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	char	*str1;
-	char	*str2;
+	unsigned int	i;
 
-	str1 = "ewefwo";
-	str2 = "ewe.fwo";
-	printf("%d VS %d\n", ft_strcmp(str1, str2), strcmp(str1, str2));
-	printf("%d VS %d", ft_strncmp(str1, str2, 0), strncmp(str1, str2, 0));
-	return (0);
+	i = 0;
+	if (!s1 && !s2)
+		return (0);
+	if (!s1)
+		return (-s2[i]);
+	if (!s2)
+		return (-s1[i]);
+	while (i < n && s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] - s2[i]);
 }
