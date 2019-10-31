@@ -6,11 +6,11 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 20:12:32 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/29 20:21:43 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/31 17:29:17 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_rev_int_tab(int *tab, int size)
+void	ft_rev_int_tab(int *tab, int size)
 {
 	int	i;
 	int	tmp;

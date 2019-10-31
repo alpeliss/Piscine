@@ -6,11 +6,11 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 19:43:25 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/29 19:45:41 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/10/31 17:28:25 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_ultimate_div_mod(int *a, int *b)
+void	ft_ultimate_div_mod(int *a, int *b)
 {
 	int c;
 	int	d;

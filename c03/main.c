@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:56:45 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/31 17:29:54 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/10/31 16:41:32 by alpeliss          #+#    #+#             */
+/*   Updated: 2019/10/31 17:26:10 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
+#include "string.h"
+#include "stdio.h"
 
-void	ft_putstr(char *str)
+int ft_strcmp(char *s1, char *s2);
+
+int main(void)
 {
-	int	i;
+	char	*str1;
+	char	*str2;
 
-	i = 0;
-	while (str[i])
-		i++;
-	write(1, str, i);
+	str1 = "";
+	str2 = "ewefwo";
+	printf("%d VS %d", ft_strcmp(str1, str2), strcmp(str1, str2));
+	return (0);
 }

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/29 19:56:45 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/31 17:29:54 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/10/31 16:41:59 by alpeliss          #+#    #+#             */
+/*   Updated: 2019/10/31 17:13:26 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
-
-void	ft_putstr(char *str)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (!s1 && !s2)
+		return (0);
+	if (!s1)
+		return (-s2[i]);
+	if (!s2)
+		return (s1[i]);
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	write(1, str, i);
+	return (s1[i] - s2[i]);	
 }
