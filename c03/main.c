@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:41:32 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/01 13:29:51 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/01 15:55:55 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 #include "stdlib.h"
 #include "stdio.h"
 
-int		ft_strcmp(char *s1, char *s2);
-int		ft_strncmp(char *s1, char *s2, unsigned int n);
-char	*ft_strcat(char *dest, char *src);
-char	*ft_strncat(char *dest, char *src, unsigned int nb);
-char	*ft_strstr(char *str, char *to_find);
+int				ft_strcmp(char *s1, char *s2);
+int				ft_strncmp(char *s1, char *s2, unsigned int n);
+char			*ft_strcat(char *dest, char *src);
+char			*ft_strncat(char *dest, char *src, unsigned int nb);
+char			*ft_strstr(char *str, char *to_find);
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 
 int main(void)
 {
@@ -53,5 +54,38 @@ int main(void)
 	printf("%s-\n", ft_strncat(dest, src, 100));
 	printf("%s\n", strstr("ddhdhh", "dh"));
 	printf("%s\n", ft_strstr("ddhdhh", "dh"));
+	printf("%u->", ft_strlcat(dest, src, 0));
+	printf("%s\n", dest);
+	printf("%u->", ft_strlcat(dest, src, 1));
+	printf("%s\n", dest);
+	printf("%u->", ft_strlcat(dest, src, 2));
+	printf("%s\n", dest);
+	printf("%u->", ft_strlcat(dest, src, 3));
+	printf("%s\n", dest);
+	printf("%u->", ft_strlcat(dest, src, 4));
+	printf("%s\n", dest);
+	printf("%u->", ft_strlcat(dest, src, 5));
+	printf("%s\n", dest);
+	printf("%u->", ft_strlcat(dest, src, 6));
+	printf("%s\n", dest);
+	printf("%u->", ft_strlcat(dest, src, 7));
+	printf("%s\n", dest);
+/*	printf("%lu->", strlcat(dest, src, 0));
+	printf("%s\n", dest);
+	printf("%lu->", strlcat(dest, src, 1));
+	printf("%s\n", dest);
+	printf("%lu->", strlcat(dest, src, 2));
+	printf("%s\n", dest);
+	printf("%lu->", strlcat(dest, src, 3));
+	printf("%s\n", dest);
+	printf("%lu->", strlcat(dest, src, 4));
+	printf("%s\n", dest);
+	printf("%lu->", strlcat(dest, src, 5));
+	printf("%s\n", dest);
+	printf("%lu->", strlcat(dest, src, 6));
+	printf("%s\n", dest);
+	printf("%lu->", strlcat(dest, src, 7));
+	printf("%s\n", dest);*/
+
 	return (0);
 }
