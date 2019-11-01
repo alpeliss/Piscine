@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/31 20:36:44 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/01 11:23:17 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		main(void)
 	char	*src2;*/
 	int		i;
 //	int		j;
-//	char	*memory;
+	char	*memory;
 	char	*str;
 	char	c;
 
@@ -91,7 +91,7 @@ int		main(void)
 	}
 	ft_putstr_non_printable(str);
 //	printf("\n%s\n", str);
-//	printf("\n\n");
-//	memory = "Bonjour les aminches.\t\n\tc est fou\ttout\tce au on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n \0";
-//	ft_print_memory(memory, 5);
+	printf("\n\n");
+	memory = "Bonjour les aminches.\t\n\tc est fou\ttout\tce au on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n \0";
+	ft_print_memory(str, 255);
 }

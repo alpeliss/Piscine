@@ -6,17 +6,19 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 11:47:21 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/31 15:43:20 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/01 11:21:30 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
 #include "stdio.h"
 
-void	write_hexa(char c)
+void	write_hexa(int c)
 {
 	char	e;
 
+	if (c < 0)
+		c = 256 + c;
 	e = (c / 16 < 10) ? '0' + c / 16 : 'a' + c / 16 - 10;
 	write(1, &e, 1);
 	e = (c % 16 < 10) ? '0' + c % 16 : 'a' + c % 16 - 10;
@@ -30,7 +32,7 @@ void	print_hexa(char *str, unsigned int i, unsigned int size)
 	j = i + 16;
 	while (i < j && i < size)
 	{
-		write_hexa(str[i]);
+		write_hexa((int)str[i]);
 		if (i % 2)
 			write(1, " ", 1);
 		i++;
