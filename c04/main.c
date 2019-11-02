@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 16:04:57 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/02 17:37:50 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/02 19:39:43 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ft_putstr(char *str);
 void	ft_putnbr(int nb);
 int		ft_atoi(char *str);
 void	ft_putnbr_base(int nbr, char *base);
+int		ft_atoi_base(char *str, char *base);
 
 int		main(void)
 {
@@ -65,4 +66,12 @@ int		main(void)
 	write(1, "\t", 1);
 	ft_putnbr_base(16, "0123456789ABCDEF");
 	write(1, "\n\n", 2);
+
+
+	/** Ex05 ft_atoi_base **/
+	printf("%d  ", ft_atoi_base("10", "0123456789ABCDEF"));
+	printf("%d  ", ft_atoi_base("FF", "0123456789ABCDEF"));
+	printf("%d  ", ft_atoi_base("-7", "0123456789ABCDEF"));
+	printf("%d", ft_atoi_base("0", "0123456789ABCDEF"));
+
 }
