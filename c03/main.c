@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:41:32 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/02 15:46:36 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/02 17:47:48 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char			*ft_strncat(char *dest, char *src, unsigned int nb);
 char			*ft_strstr(char *str, char *to_find);
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 
-int main(void)
+int main(int ac, char **av)
 {
 	char	*str1;
 	char	*str2;
@@ -31,11 +31,12 @@ int main(void)
 	char	*d2;
 	int		i;
 
-	str1 = "vvaioa";
-	str2 = "vvaoa";
-	i = 4;
+	str1 = "1111";
+	str2 = "11111";
+	i = ac;
+	printf("%s\n%s\n%s\n", av[1], av[2], av[3]);
 	printf("%d VS %d\n", ft_strcmp(str1, str2), strcmp(str1, str2));
-	printf("%d VS %d\n", ft_strncmp(str1, str2, i), strncmp(str1, str2, i));
+	printf("%d VS %d\n", ft_strncmp(av[1], av[2], atoi(av[3])), strncmp(av[1], av[2], atoi(av[3])));
 
 	src = " melo";
 	dest = (char *)malloc(100 * sizeof(char));
