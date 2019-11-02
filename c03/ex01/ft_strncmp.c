@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 17:34:45 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/10/31 17:41:12 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/02 14:41:04 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_strncmp(char *s1, char *s2, unsigned int n)
 		return (-s2[i]);
 	if (!s2)
 		return (-s1[i]);
-	while (i < n && s1[i] && s2[i] && s1[i] == s2[i])
+	while (i < n - 1 && s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
 }

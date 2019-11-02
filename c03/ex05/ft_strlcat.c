@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 14:29:51 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/02 12:37:08 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/02 15:47:35 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	if (!dest || !src)
 		return (ft_strlen(dest) + ft_strlen(src));
 	dest_len = ft_strlen(dest);
+	if (size == 0)
+		return (ft_strlen(src));
+	if ((int)size < 0)
+		size = dest_len + ft_strlen(src) + 1;
 	i = 0;
 	while (dest_len + i < size - 1 && src[i])
 	{

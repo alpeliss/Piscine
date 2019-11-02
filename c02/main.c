@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:20:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/01 12:27:45 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/02 15:08:54 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int		main(void)
 	printf("-%s-\n", dest2);	
 	ft_strncpy(dest2, NULL, 29);
 	printf("-%s-\n", dest2);
-	printf("%d%d", ft_str_is_alpha("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"),ft_str_is_alpha(""));
+/*	printf("%d%d", ft_str_is_alpha("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"),ft_str_is_alpha(""));
 	printf("%d%d%d\n", ft_str_is_alpha("!"), ft_str_is_alpha("["), ft_str_is_alpha("~"));
 	printf("%d%d", ft_str_is_numeric(""), ft_str_is_numeric("0123456789"));
 	printf("%d%d\n", ft_str_is_numeric("+"), ft_str_is_numeric(";"));
@@ -67,20 +67,20 @@ int		main(void)
 	printf("%d%d\n",  ft_str_is_lowercase("A"),  ft_str_is_lowercase("}"));
 	printf("%d%d",  ft_str_is_uppercase(""),  ft_str_is_uppercase("QWERTYUIOPASDFGHJKLZXCVBNM"));
 	printf("%d%d\n",  ft_str_is_uppercase("!"),  ft_str_is_uppercase("v"));
-	printf("%d%d",  ft_str_is_printable(""),  ft_str_is_printable("134didqw$%^*9h;'{}|]["));
-	printf("%d\n", ft_str_is_printable("\n"));
+	printf("%d%d",  ft_str_is_printable(""),  ft_str_is_printable("134didqw$%^*9h;'{}|]["));*/
+/*	printf("%d\n", ft_str_is_printable("\n"));
 	printf("->%s\n", dest);
 	printf("->%s\n",  ft_strupcase(dest));
-	printf("->%s\n",  ft_strlowcase(dest));
+	printf("->%s\n",  ft_strlowcase(dest));*/
 	ft_strupcase("");
 	ft_strlowcase("");
-	printf("\n%s\n", dest);
-	printf("->%s", ft_strcapitalize(dest));
-	printf("\nsrc->%s\ndest->%s\n", src2, dest);
+//	printf("\n%s\n", dest);
+//	printf("->%s", ft_strcapitalize(dest));
+//	printf("\nsrc->%s\ndest->%s\n", src2, dest);
 	i = strlcpy(dest, src2, 78);
 	j = ft_strlcpy(dest1, NULL, 78);
-	printf("%d  ->%s\n", i, dest);
-	printf("%d  ->%s", j, dest1);
+//	printf("%d  ->%s\n", i, dest);
+//	printf("%d  ->%s", j, dest1);
 	i = 1;
 	str =(char *)malloc(256 * sizeof(char));
 	while (i < 256)
@@ -90,8 +90,8 @@ int		main(void)
 		i++;
 	}
 	ft_putstr_non_printable(str);
-	printf("\n%s\n", str);
-	printf("\n\n");
+//	printf("\n%s\n", str);
+//	printf("\n\n");
 	memory = "Bonjour les aminches.\t\n\tc est fou\ttout\tce au on peut faire avec\t\n\tprint_memory\n\n\n\tlol.lol\n \0";
-	ft_print_memory(str, 255);
+	ft_print_memory(&i, 255);
 }

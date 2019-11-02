@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 16:41:32 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/02 12:37:24 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/02 15:46:36 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,16 @@ int main(void)
 	char	*str2;
 	char	*dest;
 	char	*src;
+	char	*d1;
+	char	*d2;
 	int		i;
 
 	str1 = "vvaioa";
 	str2 = "vvaoa";
-	i = 5;
+	i = 4;
 	printf("%d VS %d\n", ft_strcmp(str1, str2), strcmp(str1, str2));
 	printf("%d VS %d\n", ft_strncmp(str1, str2, i), strncmp(str1, str2, i));
+
 	src = " melo";
 	dest = (char *)malloc(100 * sizeof(char));
 	dest[0] = 'm';
@@ -44,6 +47,7 @@ int main(void)
 	printf("%s-\n", ft_strcat(dest, src));
 	printf("%s-\n", ft_strcat(dest, src));
 	printf("%s-\n", ft_strcat(dest, src));
+
 	printf("%s-\n", ft_strncat(dest, src, 0));
 	printf("%s-\n", ft_strncat(dest, src, 1));
 	printf("%s-\n", ft_strncat(dest, src, 2));
@@ -52,40 +56,48 @@ int main(void)
 	printf("%s-\n", ft_strncat(dest, src, 5));
 	printf("%s-\n", ft_strncat(dest, src, 6));
 	printf("%s-\n", ft_strncat(dest, src, 100));
+
 	printf("%s\n", strstr("ddhdhh", "dh"));
 	printf("%s\n", ft_strstr("ddhdhh", "dh"));
-	printf("%u->", ft_strlcat(dest, src, 10));
-	printf("%s\n", dest);
-	printf("%u->", ft_strlcat(dest, src, 11));
-	printf("%s\n", dest);
-	printf("%u->", ft_strlcat(dest, src, 12));
-	printf("%s\n", dest);
-	printf("%u->", ft_strlcat(dest, src, 13));
-	printf("%s\n", dest);
-	printf("%u->", ft_strlcat(dest, src, 14));
-	printf("%s\n", dest);
-	printf("%u->", ft_strlcat(dest, src, 15));
-	printf("%s\n", dest);
-	printf("%u->", ft_strlcat(dest, src, 16));
-	printf("%s\n", dest);
-	printf("%u->", ft_strlcat(dest, src, 77));
-	printf("%s\n", dest);/*
-	printf("%lu->", strlcat(dest, src, 10));
-	printf("%s\n", dest);
-	printf("%lu->", strlcat(dest, src, 11));
-	printf("%s\n", dest);
-	printf("%lu->", strlcat(dest, src, 12));
-	printf("%s\n", dest);
-	printf("%lu->", strlcat(dest, src, 13));
-	printf("%s\n", dest);
-	printf("%lu->", strlcat(dest, src, 14));
-	printf("%s\n", dest);
-	printf("%lu->", strlcat(dest, src, 15));
-	printf("%s\n", dest);
-	printf("%lu->", strlcat(dest, src, 16));
-	printf("%s\n", dest);
-	printf("%lu->", strlcat(dest, src, 77));
-	printf("%s\n", dest);*/
+
+	d1 = (char *)malloc(100 * sizeof(char));
+	d2 = (char *)malloc(100 * sizeof(char));
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 2), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 2), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 1), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 1), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 2), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 2), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 3), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 3), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 4), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 4), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 9), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 9), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 15), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 15), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 0), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 0), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", -1), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", -1), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 1000000000), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 1000000000), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "", 1), d1);
+	printf("%lu->%s\n", strlcat(d2, "", 1), d2);
+
+	printf("%u->%s\n", ft_strlcat(d1, "0123456789", 1), d1);
+	printf("%lu->%s\n", strlcat(d2, "0123456789", 1), d2);
+
 
 	return (0);
 }
