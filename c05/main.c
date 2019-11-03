@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 13:06:07 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/03 14:26:59 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/03 14:37:04 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int ft_iterative_power(int nb, int power);
 int ft_recursive_power(int nb, int power);
 int ft_fibonacci(int index);
 int ft_sqrt(int nb);
+int ft_is_prime(int nb);
 
 int	main(void)
 {
@@ -66,12 +67,21 @@ int	main(void)
 	printf("%d  ", ft_fibonacci(4));
 	printf("%d\n\n", ft_fibonacci(5));
 
-	/** ft_sqrt **/
+	/** Ex05 ft_sqrt **/
 	printf("%d  ", ft_sqrt(-1));
 	printf("%d  ", ft_sqrt(0));
 	printf("%d  ", ft_sqrt(1));
 	printf("%d  ", ft_sqrt(25));
 	printf("%d  ", ft_sqrt(18));
 	printf("%d  ", ft_sqrt(121));
-	printf("%d  ", ft_sqrt(10000));
+	printf("%d\n\n", ft_sqrt(10000));
+
+	/** Ex06 ft_is_prime **/
+	printf("%d  ", ft_is_prime(-1));
+	printf("%d  ", ft_is_prime(0));
+	printf("%d  ", ft_is_prime(1));
+	printf("%d  ", ft_is_prime(2));
+	printf("%d  ", ft_is_prime(49));
+	printf("%d  ", ft_is_prime(31));
+	printf("%d\n\n", ft_is_prime(4));
 }
