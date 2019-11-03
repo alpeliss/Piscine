@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 13:06:07 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/03 14:37:04 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/03 14:42:48 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int ft_recursive_power(int nb, int power);
 int ft_fibonacci(int index);
 int ft_sqrt(int nb);
 int ft_is_prime(int nb);
+int ft_find_next_prime(int nb);
 
 int	main(void)
 {
@@ -80,8 +81,17 @@ int	main(void)
 	printf("%d  ", ft_is_prime(-1));
 	printf("%d  ", ft_is_prime(0));
 	printf("%d  ", ft_is_prime(1));
-	printf("%d  ", ft_is_prime(2));
+	printf("%d  ", ft_is_prime(4));
 	printf("%d  ", ft_is_prime(49));
 	printf("%d  ", ft_is_prime(31));
-	printf("%d\n\n", ft_is_prime(4));
+	printf("%d\n\n", ft_is_prime(2));
+
+	/** Ex07 ft_find_next_prime **/
+	printf("%d  ", ft_find_next_prime(-1));
+	printf("%d  ", ft_find_next_prime(2));
+	printf("%d  ", ft_find_next_prime(3));
+	printf("%d  ", ft_find_next_prime(5));
+	printf("%d  ", ft_find_next_prime(7));
+	printf("%d  ", ft_find_next_prime(11));
+	printf("%d\n\n", ft_find_next_prime(100));
 }
