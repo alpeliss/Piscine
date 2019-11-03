@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 13:06:07 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/03 14:42:48 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/03 18:23:44 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int ft_fibonacci(int index);
 int ft_sqrt(int nb);
 int ft_is_prime(int nb);
 int ft_find_next_prime(int nb);
+int ft_ten_queens_puzzle(void);
 
 int	main(void)
 {
@@ -94,4 +95,7 @@ int	main(void)
 	printf("%d  ", ft_find_next_prime(7));
 	printf("%d  ", ft_find_next_prime(11));
 	printf("%d\n\n", ft_find_next_prime(100));
+
+	/** Ex08 ft_ten_queens_puzzle **/
+	ft_ten_queens_puzzle();
 }
