@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 13:06:07 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/03 18:23:44 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/04 20:10:24 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,5 @@ int	main(void)
 	printf("%d\n\n", ft_find_next_prime(100));
 
 	/** Ex08 ft_ten_queens_puzzle **/
-	ft_ten_queens_puzzle();
+	printf("%d\n",ft_ten_queens_puzzle());
 }

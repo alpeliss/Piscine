@@ -6,85 +6,83 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 17:43:18 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/03 18:23:41 by alpeliss         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_ten_queens_puzzle.c                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/03 14:50:17 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/03 17:42:53 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/04 20:09:20 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
-#include "stdlib.h"
 
-int		test_pos(char *str)
+void	print_result(int damier[10][10])
 {
-	int	i;	
-	int	j;
+	int		i;
+	int		j;
+	char	c;
 
 	i = 0;
-	while (i < 9)
+	while (i < 10)
 	{
-		j = i + 1;
+		j = 0;
 		while (j < 10)
 		{
-			if (str[j] == str[i])
-				return (0);
-			if (str[j] == str[i] + (j - i))
-				return (0);
-			if (str[j] == str[i] - (j - i))
-				return (0);
+			if (damier[i][j] == 1)
+			{
+				c = '0' + j;
+				write(1, &c, 1);
+				j = 10;
+			}
 			j++;
 		}
 		i++;
 	}
-	return (1);
+	write(1, "\n", 1);
 }
 
-char	*next_pos(char *str)
+void	moove_dame(int damier[10][10], int raw, int col)
+{
+	int	i;
+	int	j;
+
+	i = (damier[raw][col] == 0) ? -1 : 1;
+	j = 0;
+	while (j < 10)
+	{
+		damier[raw][j] += i;
+		damier[j][col] += i;
+		if (raw - j >= 0 && col - j >= 0)
+			damier[raw - j][col - j] += i;
+		if (raw + j < 10 && col + j < 10)
+			damier[raw + j][col + j] += i;
+		if (raw - j >= 0 && col + j < 10)
+			damier[raw - j][col + j] += i;
+		if (raw + j < 10 && col - j >= 0)
+			damier[raw + j][col - j] += i;
+		j++;
+	}
+	damier[raw][col] = (i == 1) ? 0 : 1;
+}
+
+void	solve(int damier[10][10], int *nb_results, int raw)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (raw == 10)
 	{
-		if (str[i] == '9')
-			str[i] = '0';
-		else
+		*nb_results = *nb_results + 1;
+		print_result(damier);
+	}
+	else
+	{
+		while (i < 10)
 		{
-			str[i] = str[i] + 1;
-			return (NULL);
+			if (damier[raw][i] == 0)
+			{
+				moove_dame(damier, raw, i);
+				solve(damier, nb_results, raw + 1);
+				moove_dame(damier, raw, i);
+			}
+			i++;
 		}
-		i++;
-	}
-	return (NULL);
-}
-
-void	solve(char *str, int *i)
-{
-	write(1, "a\n", 2);
-	if (test_pos(str))
-	{
-		*i = *i + 1;
-		write(1, str, 10);
-		write(1, "\n", 1);
-	}
-	write(1, "b\n", 2);
-	next_pos(str);
-	write(1, str, 10);
-	write(1, "\n", 1);
-	if (str)
-	{
-		write(1, "e\n", 2);
-		solve(str, i);
 	}
 }
 
@@ -92,12 +90,20 @@ int		ft_ten_queens_puzzle(void)
 {
 	int		i;
 	int		j;
-	int		combi;
+	int		damier[10][10];
 
-	j = 0;
-	combi = 0;
-	str[j] = '\0';
 	i = 0;
-	solve(&combi, &i);
+	while (i < 10)
+	{
+		j = 0;
+		while (j < 10)
+		{
+			damier[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+	i = 0;
+	solve(damier, &i, 0);
 	return (i);
 }
