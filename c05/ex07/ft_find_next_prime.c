@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 14:38:34 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/05 20:01:08 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/05 23:32:57 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	is_prime(int nb)
 
 int	ft_find_next_prime(int nb)
 {
-	nb++;
 	while (!(is_prime(nb)))
 		nb++;
 	return (nb);
