@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 13:06:07 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/04 20:10:24 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/05 20:04:29 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(void)
 
 	/** Ex05 ft_sqrt **/
 	printf("%d  ", ft_sqrt(-1));
-	printf("%d  ", ft_sqrt(0));
+	printf("%d  ", ft_sqrt(2147483647));
 	printf("%d  ", ft_sqrt(1));
 	printf("%d  ", ft_sqrt(25));
 	printf("%d  ", ft_sqrt(18));
@@ -82,14 +82,14 @@ int	main(void)
 	printf("%d  ", ft_is_prime(-1));
 	printf("%d  ", ft_is_prime(0));
 	printf("%d  ", ft_is_prime(1));
-	printf("%d  ", ft_is_prime(4));
+	printf("%d  ", ft_is_prime(2147483647));
 	printf("%d  ", ft_is_prime(49));
 	printf("%d  ", ft_is_prime(31));
 	printf("%d\n\n", ft_is_prime(2));
 
 	/** Ex07 ft_find_next_prime **/
 	printf("%d  ", ft_find_next_prime(-1));
-	printf("%d  ", ft_find_next_prime(2));
+	printf("%d  ", ft_find_next_prime(2147483646));
 	printf("%d  ", ft_find_next_prime(3));
 	printf("%d  ", ft_find_next_prime(5));
 	printf("%d  ", ft_find_next_prime(7));
@@ -97,5 +97,5 @@ int	main(void)
 	printf("%d\n\n", ft_find_next_prime(100));
 
 	/** Ex08 ft_ten_queens_puzzle **/
-	printf("%d\n",ft_ten_queens_puzzle());
+	printf("%d\n", ft_ten_queens_puzzle());
 }

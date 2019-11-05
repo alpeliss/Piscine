@@ -6,18 +6,18 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 14:28:41 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/03 14:37:23 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/05 19:56:51 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_is_prime(int nb)
 {
-	int	i;
+	long	i;
 
 	if (nb <= 1)
 		return (0);
 	i = 2;
-	while (i * i <= nb)
+	while (i * i <= (long)nb)
 	{
 		if (!(nb % i))
 			return (0);

@@ -6,18 +6,18 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 14:38:34 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/03 14:40:05 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/05 20:01:08 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	is_prime(int nb)
 {
-	int	i;
+	long	i;
 
 	if (nb <= 1)
 		return (0);
 	i = 2;
-	while (i * i <= nb)
+	while (i * i <= (long)nb)
 	{
 		if (!(nb % i))
 			return (0);
