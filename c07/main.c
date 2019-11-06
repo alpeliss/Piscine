@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 23:40:56 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/06 05:08:55 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/06 05:27:43 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		*ft_range(int min, int max);
 int		ft_ultimate_range(int **range, int min, int max);
 char	*ft_strjoin(int size, char **strs, char *sep);
 char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+char	**ft_split(char *str, char *charset);
 
 void	test_strdup(char *s1)
 {
@@ -70,6 +71,20 @@ void	test_convert_base(char *nbr, char *base_from, char *base_to)
 	printf("%s", ft_convert_base(nbr, base_from, base_to));
 }
 
+void	test_split(char *str, char *charset)
+{
+	char **tab;
+	int	i;
+
+	tab = ft_split(str, charset);
+	i = 0;
+	while (tab[i])
+	{
+		printf("%s-\n", tab[i]);
+		i++;
+	}
+}
+
 int		main(int ac, char **av)
 {
 	ac = ac + 1 - 1;
@@ -86,5 +101,8 @@ int		main(int ac, char **av)
 	printf("\n\n");
 
 	test_convert_base("45", "0123456789", "0123456789ABCDEF");
+	printf("\n\n");
+
+	test_split("    une phrase    toute simple", " ");
 	return (0);
 }
