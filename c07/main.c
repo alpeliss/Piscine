@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 23:40:56 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/06 03:32:12 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/06 05:08:55 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*ft_strdup(char *src);
 int		*ft_range(int min, int max);
 int		ft_ultimate_range(int **range, int min, int max);
 char	*ft_strjoin(int size, char **strs, char *sep);
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
 
 void	test_strdup(char *s1)
 {
@@ -64,6 +65,11 @@ void	test_strjoin(int size, char **strs, char *sep)
 	printf("%s\n", str);
 }
 
+void	test_convert_base(char *nbr, char *base_from, char *base_to)
+{
+	printf("%s", ft_convert_base(nbr, base_from, base_to));
+}
+
 int		main(int ac, char **av)
 {
 	ac = ac + 1 - 1;
@@ -77,5 +83,8 @@ int		main(int ac, char **av)
 	printf("\n\n");
 
 	test_strjoin(3, av, " et ");
+	printf("\n\n");
+
+	test_convert_base("45", "0123456789", "0123456789ABCDEF");
 	return (0);
 }
