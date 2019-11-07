@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 04:15:16 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/06 05:07:06 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:39:22 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,14 @@ int		ft_atoi_base(char *str, char *base)
 		return (0);
 	i = 0;
 	total = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
-			|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+	m = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
 		i++;
 	m = 1;
-	if (str[i] == '-' || str[i] == '+')
+	while (str[i] == '-' || str[i] == '+')
 	{
-		m = (str[i] == '-') ? -1 : 1;
+		if (str[i] == '-')
+			m *= -1;
 		i++;
 	}
 	while (str[i] && find_val(str[i], base) >= 0)

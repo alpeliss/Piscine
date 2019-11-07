@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 23:40:56 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/06 05:27:43 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/07 15:41:09 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	test_strjoin(int size, char **strs, char *sep)
 	char	*str;
 	
 	str = ft_strjoin(size, strs, sep);
-	write(1, "5\n", 2);
 	printf("%s\n", str);
 }
 
@@ -87,7 +86,7 @@ void	test_split(char *str, char *charset)
 
 int		main(int ac, char **av)
 {
-	ac = ac + 1 - 1;
+	ac = ac + 1 - av[0][0];
 	test_strdup("Test");
 	printf("\n");
 
@@ -97,10 +96,10 @@ int		main(int ac, char **av)
 	test_ultim_range(10, 20);
 	printf("\n\n");
 
-	test_strjoin(3, av, " et ");
+	test_strjoin(3, NULL, "##");
 	printf("\n\n");
 
-	test_convert_base("45", "0123456789", "0123456789ABCDEF");
+	test_convert_base("\0\t\n\r\v\f--+++++-45", "0123456789", "0123456789ABCDEF");
 	printf("\n\n");
 
 	test_split("    une phrase    toute simple", " ");
