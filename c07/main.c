@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 23:40:56 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/07 15:41:09 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/07 18:15:55 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	test_strjoin(int size, char **strs, char *sep)
 	char	*str;
 	
 	str = ft_strjoin(size, strs, sep);
-	printf("%s\n", str);
+	printf("-%s-\n", str);
 }
 
 void	test_convert_base(char *nbr, char *base_from, char *base_to)
@@ -95,8 +95,11 @@ int		main(int ac, char **av)
 
 	test_ultim_range(10, 20);
 	printf("\n\n");
+	
+	char	*str;
 
-	test_strjoin(3, NULL, "##");
+	str = "bo";
+	test_strjoin(3, av, NULL);
 	printf("\n\n");
 
 	test_convert_base("\0\t\n\r\v\f--+++++-45", "0123456789", "0123456789ABCDEF");

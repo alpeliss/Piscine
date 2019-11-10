@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 00:20:50 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/07 14:41:55 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/07 18:13:39 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,23 +68,22 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 
 	if (size <= 0 || !strs)
 	{
-		res = (char *)malloc(sizeof(char));
+		if (!(res = (char *)malloc(sizeof(char))))
+			return (NULL);
 		res[0] = '\0';
 		return (res);
 	}
-	else
+	res_size = calc_size(strs, sep, size);
+	if (!(res = (char *)malloc(res_size * sizeof(char))))
+		return (NULL);
+	i = 0;
+	while (i < size)
 	{
-		res_size = calc_size(strs, sep, size);
-		res = (char *)malloc(res_size * sizeof(char));
-		i = 0;
-		while (i < size)
-		{
-			ft_strcat(res, strs[i]);
-			if (i != size - 1)
-				ft_strcat(res, sep);
-			i++;
-		}
-		res[res_size] = '\0';
-		return (res);
+		ft_strcat(res, strs[i]);
+		if (i != size - 1)
+			ft_strcat(res, sep);
+		i++;
 	}
+	res[res_size] = '\0';
+	return (res);
 }
