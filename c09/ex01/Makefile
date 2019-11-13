@@ -3,14 +3,13 @@ NAME = libft.a
 SRCDIR = ./srcs/
 
 SRCNAMES =	ft_putchar.c \
-			ft_swap.c \
-			ft_putstr.c \
-			ft_strlen.c \
-			ft_strcmp.c
+		ft_swap.c \
+		ft_putstr.c \
+		ft_strlen.c \
+		ft_strcmp.c
 
-INC = ./includes/
 SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
-OBJ = $(patsubst %.c,%.o, $(SRC))
+OBJS = $(SRC:.c=.o)
 
 
 CC = gcc
@@ -19,13 +18,12 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
-	$(CC) $(SRC)
-	ar r $(NAME) $(OBJ)
+$(NAME): $(OBJS)
+	ar r $(NAME) $(OBJS)
 	ranlib $(NAME)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
