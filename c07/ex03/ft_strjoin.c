@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 00:20:50 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/11 15:58:03 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/13 14:25:55 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,8 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 
 	res_size = calc_size(strs, sep, size);
-	if (!(res = (char *)malloc(res_size * sizeof(char))))
-		return (NULL);
-	if (res_size == 1)
+	res = malloc(res_size * sizeof(char));
+	if (size <= 0)
 		return (res);
 	i = 0;
 	while (i < size)

@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 19:49:37 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/10 16:45:22 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/13 15:04:09 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(void)
 	strs[7] = "";
 	strs[8] = "";
 	strs[9] = "";
-	str = ft_strjoin(10, strs, " et ");
+	str = ft_strjoin(7, strs, " et ");
 	printf("->%s<-\n", str);
 	free(str);
 	return (0);
