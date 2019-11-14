@@ -5,34 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/06 00:20:50 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/13 14:25:55 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/11/14 18:41:10 by alpeliss          #+#    #+#             */
+/*   Updated: 2019/11/14 18:55:53 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdlib.h"
+#include <stdlib.h>
 
-char	*ft_strcat(char *dest, char *src)
-{
-	int	i;
-	int	j;
-
-	if (!dest || !src)
-		return (dest);
-	i = 0;
-	while (dest[i])
-		i++;
-	j = 0;
-	while (src[j])
-	{
-		dest[i + j] = src[j];
-		j++;
-	}
-	dest[i + j] = '\0';
-	return (dest);
-}
-
-int		ft_strlen(char *str)
+static int		ft_strlen(char *str)
 {
 	int	i;
 
@@ -44,40 +24,47 @@ int		ft_strlen(char *str)
 	return (i);
 }
 
-int		calc_size(char **strs, char *sep, int size)
+static int		ft_count(int size, char **strs, char *sep)
 {
-	int	i;
-	int	total;
+	int i;
+	int count;
 
-	total = 0;
+	count = ft_strlen(sep) * (size - 1);
 	i = 0;
 	while (i < size)
 	{
-		total += ft_strlen(strs[i]);
+		count += ft_strlen(strs[i]);
 		i++;
 	}
-	total += (size - 1) * ft_strlen(sep);
-	return (total + 1);
+	if (count <= 0)
+		return (0);
+	return (count + 1);
 }
 
-char	*ft_strjoin(int size, char **strs, char *sep)
+char			*ft_strjoin(int size, char **strs, char *sep)
 {
-	char	*res;
-	int		res_size;
+	int		a;
+	int		b;
 	int		i;
+	char	*tab;
 
-	res_size = calc_size(strs, sep, size);
-	res = malloc(res_size * sizeof(char));
-	if (size <= 0)
-		return (res);
+	tab = malloc(ft_count(size, strs, sep) * sizeof(char));
+	if (size == 0)
+		return (tab);
 	i = 0;
-	while (i < size)
+	a = 0;
+	while (a < size)
 	{
-		ft_strcat(res, strs[i]);
-		if (i != size - 1)
-			ft_strcat(res, sep);
-		i++;
+		b = -1;
+		if (strs[a])
+			while (strs[a][++b])
+				tab[i++] = strs[a][b];
+		b = -1;
+		if (sep)
+			while (sep[++b] && a < size - 1)
+				tab[i++] = sep[b];
+		a++;
 	}
-	res[res_size] = '\0';
-	return (res);
+	tab[i] = '\0';
+	return (tab);
 }
