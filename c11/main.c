@@ -6,14 +6,17 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 19:22:22 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/14 20:13:13 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:39:42 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
+#include "stdio.h"
+#include "stdlib.h"
 
 void ft_foreach(int *tab, int length, void(*f)(int));
 int *ft_map(int *tab, int length, int(*f)(int));
+int ft_any(char **tab, int(*f)(char*));
 
 void	ft_putnbr(int a)
 {
@@ -28,11 +31,41 @@ int		plus_one(int i)
 	return (i + 1);
 }
 
+int		test_b(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == 'b')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int		test_a(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == 'a')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+
 int	main(void)
 {
-	int	tab[10];
-	int	i;
-	int	*n_tab;
+	int		tab[11];
+	char	**strs;
+	int		i;
+	int		*n_tab;
 
 	i = 0;
 	while (i < 10)
@@ -44,4 +77,15 @@ int	main(void)
 	n_tab = ft_map(tab, 10, &plus_one);
 	write(1, "\n", 1);
 	ft_foreach(n_tab, 10, &ft_putnbr);
+	write(1, "\n", 1);
+
+	strs = malloc(5 * sizeof(char *));
+	strs[0] = "sss";
+	strs[1] = "ttt";
+	strs[2] = "bob";
+	strs[3] = "svp";
+	strs[4] =  NULL;
+	printf("%d\n", ft_any(strs, &test_a));
+	printf("%d\n", ft_any(strs, &test_b));
+	return (0);
 }
