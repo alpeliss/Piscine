@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 19:22:22 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/14 20:39:42 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/14 20:46:21 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 void ft_foreach(int *tab, int length, void(*f)(int));
 int *ft_map(int *tab, int length, int(*f)(int));
 int ft_any(char **tab, int(*f)(char*));
+int ft_count_if(char **tab, int length, int(*f)(char*));
 
 void	ft_putnbr(int a)
 {
@@ -36,6 +37,8 @@ int		test_b(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return(0);
 	while (str[i])
 	{
 		if (str[i] == 'b')
@@ -49,6 +52,8 @@ int		test_a(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 	{
@@ -80,12 +85,15 @@ int	main(void)
 	write(1, "\n", 1);
 
 	strs = malloc(5 * sizeof(char *));
-	strs[0] = "sss";
+	strs[0] = "sbs";
 	strs[1] = "ttt";
 	strs[2] = "bob";
-	strs[3] = "svp";
+	strs[3] = "svpb";
 	strs[4] =  NULL;
 	printf("%d\n", ft_any(strs, &test_a));
-	printf("%d\n", ft_any(strs, &test_b));
+	printf("%d\n\n", ft_any(strs, &test_b));
+
+	printf("%d\n", ft_count_if(strs, 5, &test_a));
+	printf("%d\n", ft_count_if(strs, 5, &test_b));
 	return (0);
 }
