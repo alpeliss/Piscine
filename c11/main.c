@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 19:22:22 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/14 20:46:21 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/14 21:11:42 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void ft_foreach(int *tab, int length, void(*f)(int));
 int *ft_map(int *tab, int length, int(*f)(int));
 int ft_any(char **tab, int(*f)(char*));
 int ft_count_if(char **tab, int length, int(*f)(char*));
+int ft_is_sort(int *tab, int length, int(*f)(int, int));
 
 void	ft_putnbr(int a)
 {
@@ -64,6 +65,22 @@ int		test_a(char *str)
 	return (0);
 }
 
+int		comp(int a, int b)
+{
+	return (a - b);
+}
+
+void	p_tab(int *tab, int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		printf("%3d", tab[i]);
+		i++;
+	}
+}
 
 int	main(void)
 {
@@ -94,6 +111,11 @@ int	main(void)
 	printf("%d\n\n", ft_any(strs, &test_b));
 
 	printf("%d\n", ft_count_if(strs, 5, &test_a));
-	printf("%d\n", ft_count_if(strs, 5, &test_b));
+	printf("%d\n\n", ft_count_if(strs, 5, &test_b));
+
+	tab[2] = 3;
+	tab[4] = 2;
+	p_tab(tab, 10);
+	printf("\n%d\n", ft_is_sort(tab, 10, &comp));
 	return (0);
 }
