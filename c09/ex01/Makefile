@@ -1,36 +1,32 @@
-NAME = libft.a
+SRCDIR	= ./srcs/
+SRCNAME	= ft_putchar.c ft_swap.c ft_putstr.c ft_strlen.c ft_strcmp.c
+SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
-SRCDIR = ./srcs/
-INC = ./includes/
+OBJS	= ${SRCS:.c=.o}
 
-SRCNAMES =	ft_putchar.c \
-		ft_swap.c \
-		ft_putstr.c \
-		ft_strlen.c \
-		ft_strcmp.c
+NAME	= libft.a
 
-SRC = $(addprefix $(SRCDIR), $(SRCNAMES))
-OBJS = $(SRC:.c=.o)
+CC		= gcc
+RM		= rm -f
 
+CFLAGS	= -Wall -Wextra -Werror
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-RM = rm -f
-
-all: $(NAME)
+INCDIR	= ./includes/
 
 .c.o:
-	${CC} -c $^ ${CFLAGS} -I${INCDIR}  -o $@
+			${CC} ${CFLAGS} -I ${INCDIR} -c $< -o ${<:.c=.o}
 
-$(NAME): $(OBJS)
-	ar r $(NAME) $(OBJS)
+${NAME}:	${OBJS}
+			ar rc ${NAME} ${OBJS}
+
+all: 		${NAME}
 
 clean:
-	$(RM) $(OBJS)
+			${RM} ${OBJS}
 
-fclean: clean
-	$(RM) $(NAME)
+fclean:		clean
+			${RM} ${NAME}
 
-re: fclean all
+re:			fclean all
 
-.PHONY: clean fclean re all
+.PHONY:		clean fclean re all
