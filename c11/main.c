@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 19:22:22 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/14 21:11:42 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:29:32 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int *ft_map(int *tab, int length, int(*f)(int));
 int ft_any(char **tab, int(*f)(char*));
 int ft_count_if(char **tab, int length, int(*f)(char*));
 int ft_is_sort(int *tab, int length, int(*f)(int, int));
+void ft_sort_string_tab(char **tab);
 
 void	ft_putnbr(int a)
 {
@@ -82,6 +83,19 @@ void	p_tab(int *tab, int size)
 	}
 }
 
+void	p_strs(char **strs)
+{
+	int	i;
+
+	if (strs)
+	{
+		i = -1;
+		while (strs[++i])
+			printf("%s\t", strs[i]);
+	}
+	printf ("\n");
+}
+
 int	main(void)
 {
 	int		tab[11];
@@ -117,5 +131,9 @@ int	main(void)
 	tab[4] = 2;
 	p_tab(tab, 10);
 	printf("\n%d\n", ft_is_sort(tab, 10, &comp));
+
+	p_strs(strs);
+	ft_sort_string_tab(strs);
+	p_strs(strs);
 	return (0);
 }
