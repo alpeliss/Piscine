@@ -6,13 +6,14 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 19:22:22 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/15 14:29:32 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/15 14:45:16 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
 #include "stdio.h"
 #include "stdlib.h"
+#include "string.h"
 
 void ft_foreach(int *tab, int length, void(*f)(int));
 int *ft_map(int *tab, int length, int(*f)(int));
@@ -20,6 +21,7 @@ int ft_any(char **tab, int(*f)(char*));
 int ft_count_if(char **tab, int length, int(*f)(char*));
 int ft_is_sort(int *tab, int length, int(*f)(int, int));
 void ft_sort_string_tab(char **tab);
+void ft_advanced_sort_string_tab(char **tab, int(*cmp)(char *, char *));
 
 void	ft_putnbr(int a)
 {
@@ -96,6 +98,22 @@ void	p_strs(char **strs)
 	printf ("\n");
 }
 
+int	cmp(char *sa, char *sb)
+{
+	int	i;
+
+	if (!sa && !sb)
+		return (0);
+	else if (!sa)
+		return (-sb[0]);
+	else if (!sb)
+		return (sa[0]);
+	i = 0;
+	while (sa[i] && sa[i] == sb[i])
+		i++;
+	return (sa[i] - sb[i]);
+}
+
 int	main(void)
 {
 	int		tab[11];
@@ -133,7 +151,8 @@ int	main(void)
 	printf("\n%d\n", ft_is_sort(tab, 10, &comp));
 
 	p_strs(strs);
-	ft_sort_string_tab(strs);
+	//	ft_sort_string_tab(strs);
+	ft_advanced_sort_string_tab(strs, &cmp);
 	p_strs(strs);
 	return (0);
 }
