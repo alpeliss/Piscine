@@ -1,15 +1,10 @@
 SRCDIR	= ./srcs/
-SRCNAME	= ft_putnbr.c	\
-		  do_op.c 		\
-		  ft_atol.c		\
-		  op.c
+SRCNAME	= display_file.c
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
-
-INCDIR	=./includes/
 
 OBJS	= ${SRCS:.c=.o}
 
-NAME	= do-op
+NAME	= ft_display_file
 
 CC		= gcc
 RM		= rm -f
@@ -18,7 +13,7 @@ CFLAGS	= -Wall -Wextra -Werror
 
 
 .c.o:
-			${CC} ${CFLAGS} -I ${INCDIR} -c $< -o ${<:.c=.o}
+			${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			${CC} -o ${NAME} ${OBJS}

@@ -1,15 +1,19 @@
 SRCDIR	= ./srcs/
-SRCNAME	= ft_putnbr.c	\
-		  do_op.c 		\
-		  ft_atol.c		\
-		  op.c
+SRCNAME	= main.c				\
+		  get_dico.c			\
+		  utils.c				\
+		  parse_file.c			\
+		  print_nb.c			\
+		  free_dico.c			\
+		  make_intern_dico.c	\
+		  print_unity.c
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
 INCDIR	=./includes/
 
 OBJS	= ${SRCS:.c=.o}
 
-NAME	= do-op
+NAME	= rush-02
 
 CC		= gcc
 RM		= rm -f

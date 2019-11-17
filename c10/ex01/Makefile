@@ -1,15 +1,12 @@
 SRCDIR	= ./srcs/
-SRCNAME	= ft_putnbr.c	\
-		  do_op.c 		\
-		  ft_atol.c		\
-		  op.c
+SRCNAME	= ft_cat.c print_line.c utils.c
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
 INCDIR	=./includes/
 
 OBJS	= ${SRCS:.c=.o}
 
-NAME	= do-op
+NAME	= ft_cat
 
 CC		= gcc
 RM		= rm -f
