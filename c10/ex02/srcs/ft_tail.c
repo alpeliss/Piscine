@@ -1,58 +1,98 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tail.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/17 14:37:51 by alpeliss          #+#    #+#             */
+/*   Updated: 2019/11/17 16:03:18 by alpeliss         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_tail.h"
 
-static int	msg_error(int err, char *file)
+static int	calc_size(char *file)
 {
-	if (err)
+	int		fd;
+	char	tmp;
+	int		size_file;
+
+	fd = open(file, O_RDONLY);
+	read(fd, &tmp, 1);
+	if (errno)
 	{
-		write (2, "cat: ", 5);
-		write(2, file, ft_strlen(file));
-		write(2, ": ", 2);
-		write(2, strerror(err), ft_strlen(strerror(err)));
-		write(2, "\n", 1);
-		return (1);
+		close(fd);
+		errno = 0;
+		return (-1);
 	}
+	size_file = 1;
+	while (read(fd, &tmp, 1) && !errno)
+		size_file++;
+	close(fd);
+	return (size_file);
+}
+
+static int	print_end_file(char *file, int nb)
+{
+	int		size_file;
+	int		fd;
+	char	*deb_file;
+	char	*end_file;
+
+	size_file = calc_size(file);
+	fd = open(file, O_RDONLY);
+	deb_file = malloc((size_file - nb) * sizeof(char));
+	read(fd, deb_file, size_file - nb);
+	free(deb_file);
+	nb = (nb <= size_file) ? nb : size_file;
+	end_file = malloc(nb * sizeof(char));
+	read(fd, end_file, nb);
+	write(1, end_file, nb);
+	free(end_file);
+	close(fd);
 	return (0);
 }
 
-static int	calc_size_file(int fd, char *file)
+static int	check(int ac, char **av)
 {
-	int	size_file;
-	int	c;
+	int	i;
 
-	read(fd, &c, 1);
-	size_file = 0; 
-	if (!msg_error(errno, file))
-	{
-		while (read(fd, &c, 1))
-			size_file++;
-		return (size_file);
-	}
-	return (-1);
+	if (ac < 4)
+		return (0);
+	if (ft_strcmp(av[1], "-c"))
+		return (0);
+	i = 0;
+	while (av[2][i] && (av[2][i] == ' ' || (av[2][i] > 8 && av[2][i] < 14)))
+		i++;
+	if (av[2][i] == '-' || av[2][i] == '+')
+		i++;
+	if (av[2][i] < '0' || av[2][i] > '9')
+		return (0);
+	return (1);
 }
 
-int		main(int ac, char **av)
+int			main(int ac, char **av)
 {
-	int	fd;
-	int	i;
-	int	size_file;
-	char	*line;
+	int		i;
+	int		nb;
 
 	i = 3;
+	if (!check(ac, av))
+		return (0);
+	nb = ft_atoi(av[2]);
+	nb = (nb < 0) ? -nb : nb;
 	while (i < ac)
 	{
-		fd = open(av[i], O_RDONLY);
-		if (!msg_error(errno, av[i]))
-			size_file = calc_size_file(fd, av[i]);
-		close (fd);
-		errno = 0;
-		if (size_file >= 0)
+		if (ac > 4)
 		{
-			read(fd, NULL, size_file - 10);
-			line = malloc(10 * sizeof(char));
-			read(fd, line, 10);
-			write(1, line, 10);
-			free(line);
+			write(1, "==> ", 4);
+			write(1, av[i], ft_strlen(av[i]));
+			write(1, "<==\n", 4);
 		}
+		print_end_file(av[i], nb);
+		if (ac > 4 && i < ac - 1)
+			write(1, "\n", 1);
 		i++;
 	}
 	return (0);
