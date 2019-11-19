@@ -1,46 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_advanced_sort_string_tab.c                      :+:      :+:    :+:   */
+/*   get_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 14:37:57 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/19 10:53:36 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/11/18 11:21:00 by alpeliss          #+#    #+#             */
+/*   Updated: 2019/11/18 11:38:51 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	ft_advanced_sort(char **tab, int ac, int (*cmp)(char *, char *))
+#include "bsq.h"
+
+static char	*add_letter(char *str, char c)
 {
 	int		i;
-	int		j;
-	char	*tmp;
+	char	*new;
 
+	new = (char *)malloc((ft_strlen(str) + 2) * sizeof(char));
 	i = 0;
-	while (i < ac - 1)
+	if (str)
 	{
-		j = i + 1;
-		while (j < ac)
+		while (str[i])
 		{
-			if (cmp(tab[j], tab[i]) <= 0)
-			{
-				tmp = tab[j];
-				tab[j] = tab[i];
-				tab[i] = tmp;
-			}
-			j++;
+			new[i] = str[i];
+			i++;
 		}
-		i++;
 	}
+	if (str)
+		free(str);
+	new[i++] = c;
+	new[i] = '\0';
+	return (new);
 }
 
-void		ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
+char		*get_line(int fd)
 {
-	int	i;
+	char	c;
+	char	*line;
+	int		i;
 
+	c = '*';
+	line = NULL;
 	i = 0;
-	if (tab)
-		while (tab[i])
-			i++;
-	ft_advanced_sort(tab, i, cmp);
+	while (c != '\n' && read(fd, &c, 1) > 0 && c)
+		line = add_letter(line, c);
+	return (line);
 }

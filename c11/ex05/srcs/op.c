@@ -6,31 +6,31 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 13:34:10 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/15 13:43:38 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/19 10:41:08 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "do_op.h"
 
-void	p_add(long a, long b)
+void	p_add(int a, int b)
 {
 	ft_putnbr(a + b);
 	write(1, "\n", 1);
 }
 
-void	p_sub(long a, long b)
+void	p_sub(int a, int b)
 {
 	ft_putnbr(a - b);
 	write(1, "\n", 1);
 }
 
-void	p_mul(long a, long b)
+void	p_mul(int a, int b)
 {
 	ft_putnbr(a * b);
 	write(1, "\n", 1);
 }
 
-void	p_div(long a, long b)
+void	p_div(int a, int b)
 {
 	if (b)
 		ft_putnbr(a / b);
@@ -39,7 +39,7 @@ void	p_div(long a, long b)
 	write(1, "\n", 1);
 }
 
-void	p_mod(long a, long b)
+void	p_mod(int a, int b)
 {
 	if (b)
 		ft_putnbr(a % b);

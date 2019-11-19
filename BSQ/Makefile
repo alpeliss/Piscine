@@ -1,17 +1,14 @@
-SRCS	= ./srcs/main.c				\
-		 ./srcs/get_dico.c			\
-		  ./srcs/utils.c				\
-		  ./srcs/parse_file.c			\
-		  ./srcs/print_nb.c			\
-		  ./srcs/free_dico.c			\
-		  ./srcs/make_intern_dico.c	\
-		  ./srcs/print_unity.c
+SRCDIR	= ./code/
+SRCNAME	=	main.c		\
+			utils.c		\
+		   	get_line.c	
+SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
 INCDIR	=./includes/
 
 OBJS	= ${SRCS:.c=.o}
 
-NAME	= rush-02
+NAME	= BSQ
 
 CC		= gcc
 RM		= rm -f

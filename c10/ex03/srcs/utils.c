@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 15:31:59 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/17 21:46:59 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/18 20:25:02 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,26 @@ void		ft_putnbr_hex(long nb)
 	}
 	write(1, "0000000", 7 - size);
 	putnbr_hex(nbr, "0123456789abcdef");
+}
+
+char		*ft_strndup(char *src, int n)
+{
+	{
+		int		i;
+		char	*copy;
+
+		if (!src)
+			return (NULL);
+		i = 0;
+		if (!(copy = (char *)malloc((n + 1) * sizeof(char))))
+			return (NULL);
+		i = 0;
+		while (i < n)
+		{
+			copy[i] = src[i];
+			i++;
+		}
+		copy[i] = '\0';
+		return (copy);
+	}
 }

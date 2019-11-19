@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_op.h                                            :+:      :+:    :+:   */
+/*   bsq.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/15 14:10:22 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/19 10:41:39 by alpeliss         ###   ########.fr       */
+/*   Created: 2019/11/18 11:09:49 by alpeliss          #+#    #+#             */
+/*   Updated: 2019/11/18 11:36:41 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DO_OP_H
-# define DO_OP_H
+#ifndef BSQ_H
+# define BSQ_H
 
 # include "unistd.h"
+# include "stdlib.h"
+# include "sys/stat.h"
+# include "sys/types.h"
+# include "fcntl.h"
 
-int		ft_atoi(char *str);
-void	ft_putnbr(int nb);
-void	p_add(int a, int b);
-void	p_sub(int a, int b);
-void	p_mul(int a, int b);
-void	p_div(int a, int b);
-void	p_mod(int a, int b);
+char	*get_line(int fd);
+int		ft_strlen(char *str);
 
 #endif

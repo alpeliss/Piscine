@@ -6,13 +6,13 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/02 16:15:17 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/14 21:25:00 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/19 10:43:40 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
 
-void	mini_putnbr(long nb)
+void	mini_putnbr(int nb)
 {
 	char	c;
 
@@ -25,7 +25,7 @@ void	mini_putnbr(long nb)
 	write(1, &c, 1);
 }
 
-void	ft_putnbr(long nb)
+void	ft_putnbr(int nb)
 {
 	if (nb > -10 && nb < 10)
 		mini_putnbr(nb);

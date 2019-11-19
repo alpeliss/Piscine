@@ -6,15 +6,15 @@
 /*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 17:24:38 by exam              #+#    #+#             */
-/*   Updated: 2019/11/14 21:20:15 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/19 10:46:04 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atol(char *str)
+int	ft_atoi(char *str)
 {
-	long	i;
-	long	m;
-	long	total;
+	int	i;
+	int	m;
+	int	total;
 
 	i = 0;
 	total = 0;

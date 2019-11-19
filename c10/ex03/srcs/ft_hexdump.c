@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 18:18:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/17 22:02:44 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/18 20:53:12 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,41 +49,44 @@ int		main(int ac, char **av)
 {
 	int		fd;
 	char	*line;
-	char	*new_line;
+	char	temp[16];
 	int		bit_count;
 	int		tmp;
 	int		j;
+	int		i;
 
 	j = 1;
-	ac = ac + 1 - 1;
-	line = (char *)malloc(16 * sizeof(char));
-	new_line = (char *)malloc(16 * sizeof(char));
-	fd = open(av[1], O_RDONLY);
-	ft_putnbr_hex(0);
-	bit_count = read(fd, line, 16);
-	print_hex(line, bit_count);
-	while ((tmp = read(fd, new_line, 16)))
+	i = 0;
+	bit_count = 0;
+	while (++i < ac)
 	{
-		if (ft_strcmp(line, new_line) || tmp < 16)
+		ft_putnbr_hex(bit_count);
+		line = (char *)malloc(16 * sizeof(char));
+		fd = open(av[i], O_RDONLY);
+		bit_count += read(fd, line, 16);
+		print_hex(line, bit_count);
+		while ((tmp = read(fd, temp, 16)))
 		{
-			j = 1;
-			ft_putnbr_hex(bit_count);
-			print_hex(new_line, tmp);
-			free (line);
-			line = new_line;
-			new_line = (char *)malloc(16 * sizeof(char));
+			temp[tmp] = '\0';
+			if (ft_strcmp(line, temp) || tmp < 16)
+			{
+				j = 1;
+				ft_putnbr_hex(bit_count);
+				free (line);
+				line = ft_strndup(temp, tmp);
+				print_hex(line, tmp);
+			}
+			else if (j)
+			{
+				j = 0;
+				write(1, "*\n", 2);
+			}
+			bit_count += tmp;
 		}
-		else if (j)
-		{
-			j = 0;
-			write(1, "*\n", 2);
-		}
-		bit_count += tmp;
+		ft_putnbr_hex(bit_count);
+		write(1, "\n", 1);
+		close (fd);
+		free(line);
 	}
-	ft_putnbr_hex(bit_count);
-	write(1, "\n", 1);
-	close (fd);
-	free(line);
-	free(new_line);
 	return (0);
 }

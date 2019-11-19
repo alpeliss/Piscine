@@ -1,7 +1,7 @@
 SRCDIR	= ./srcs/
 SRCNAME	= ft_putnbr.c	\
 		  do_op.c 		\
-		  ft_atol.c		\
+		  ft_atoi.c		\
 		  op.c
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
