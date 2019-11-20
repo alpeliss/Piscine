@@ -6,11 +6,20 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 21:00:43 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/14 21:08:45 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/20 11:15:36 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_is_sort(int *tab, int length, int (*f)(int, int))
+#include "stdio.h"
+
+static int	identical_sign(int a, int b)
+{
+	if ((a <= 0 && b <= 0) || (a >= 0 && b >= 0))
+		return (1);
+	return (0);
+}
+
+int			ft_is_sort(int *tab, int length, int (*f)(int, int))
 {
 	int	i;
 	int	sens;
@@ -26,8 +35,10 @@ int	ft_is_sort(int *tab, int length, int (*f)(int, int))
 		{
 			if (!sens)
 				sens = tmp;
-			else if (sens * tmp < 0)
+			else if (!identical_sign(sens, tmp))
+			{
 				return (0);
+			}
 		}
 		i++;
 	}

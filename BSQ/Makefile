@@ -1,14 +1,18 @@
-SRCDIR	= ./code/
-SRCNAME	=	main.c		\
-			utils.c		\
-		   	get_line.c	
+SRCDIR	= ./srcs/
+SRCNAME	=	main.c			\
+			utils.c			\
+		   	get_line.c		\
+			make_tab.c		\
+			resolv.c		\
+			first_line.c	\
+			get_full_line.c
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
 INCDIR	=./includes/
 
 OBJS	= ${SRCS:.c=.o}
 
-NAME	= BSQ
+NAME	= bsq
 
 CC		= gcc
 RM		= rm -f

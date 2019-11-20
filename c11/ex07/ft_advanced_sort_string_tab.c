@@ -6,23 +6,23 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/15 14:37:57 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/19 10:53:36 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/20 11:07:13 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static void	ft_advanced_sort(char **tab, int ac, int (*cmp)(char *, char *))
+void	ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
 {
 	int		i;
 	int		j;
 	char	*tmp;
 
 	i = 0;
-	while (i < ac - 1)
+	while (tab[i + 1])
 	{
 		j = i + 1;
-		while (j < ac)
+		while (tab[j])
 		{
-			if (cmp(tab[j], tab[i]) <= 0)
+			if ((*cmp)(tab[j], tab[i]) <= 0)
 			{
 				tmp = tab[j];
 				tab[j] = tab[i];
@@ -32,15 +32,4 @@ static void	ft_advanced_sort(char **tab, int ac, int (*cmp)(char *, char *))
 		}
 		i++;
 	}
-}
-
-void		ft_advanced_sort_string_tab(char **tab, int (*cmp)(char *, char *))
-{
-	int	i;
-
-	i = 0;
-	if (tab)
-		while (tab[i])
-			i++;
-	ft_advanced_sort(tab, i, cmp);
 }

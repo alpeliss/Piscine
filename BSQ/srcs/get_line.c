@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 11:21:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/18 11:38:51 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:03:37 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,12 @@ static char	*add_letter(char *str, char c)
 	int		i;
 	char	*new;
 
-	new = (char *)malloc((ft_strlen(str) + 2) * sizeof(char));
+	if (!(new = (char *)malloc((ft_strlen(str) + 2) * sizeof(char))))
+	{
+		if (str)
+			free(str);
+		return (NULL);
+	}
 	i = 0;
 	if (str)
 	{
@@ -44,6 +49,9 @@ char		*get_line(int fd)
 	line = NULL;
 	i = 0;
 	while (c != '\n' && read(fd, &c, 1) > 0 && c)
-		line = add_letter(line, c);
+	{
+		if (!(line = add_letter(line, c)))
+			return (NULL);
+	}
 	return (line);
 }
