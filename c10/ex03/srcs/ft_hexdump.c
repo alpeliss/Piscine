@@ -6,87 +6,86 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 18:18:00 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/18 20:53:12 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/20 14:27:44 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
 
-static void print_spe_char(char c)
+static void	putnbr_hex(long nb)
 {
-	write(1, "\\", 1);
-	if (c == 10)
-		write(1, "n", 1);
-	if (c == 9)
-		write(1, "t", 1);
+	char	*base;
+
+	base = "0123456789abcdef";
+	if (nb < 16)
+		write(1, &base[nb], 1);
+	else if (nb > 0)
+	{
+		putnbr_hex(nb / 16);
+		putnbr_hex(nb % 16);
+	}
 }
 
-static void	print_hex(char *line, int tmp)
+void		ft_putnbr_hex(long nb)
+{
+	int	size;
+	int	nbr;
+
+	nbr = nb;
+	size = 1;
+	while (nb / 16)
+	{
+		size++;
+		nb /= 16;
+	}
+	write(1, "0000000", 7 - size);
+	putnbr_hex(nbr);
+}
+
+static void	write_hexa(int c)
+{
+	char	e;
+
+	if (c < 0)
+		c = 256 + c;
+	e = (c / 16 < 10) ? '0' + c / 16 : 'a' + c / 16 - 10;
+	write(1, &e, 1);
+	e = (c % 16 < 10) ? '0' + c % 16 : 'a' + c % 16 - 10;
+	write(1, &e, 1);
+}
+
+static void	print_hexa(char *line)
 {
 	int	i;
+	int	j;
 
 	i = 0;
 	write(1, "  ", 2);
-	while (i < tmp)
+	while (line[i] && i < 16)
 	{
-		if (line[i] >= 32 && line[i] <= 126)
-		{
+		write_hexa((int)line[i]);
+		if (i != 15 && line[i + 1])
 			write(1, " ", 1);
-			write(1, &line[i], 1);
-		}
-		else
-			print_spe_char(line[i]);
-		if (i != tmp - 1)
-			write(1, "  ", 2);
+		if (i == 7)
+			write(1, " ", 1);
 		i++;
 	}
-	while (i++ < 16)
-		write(1, "    ", 4);
+	j = i;
+	while (i < 16)
+	{
+		if (j < 8)
+			write(1, " ", 1);
+		j = 10;
+		write(1, "   ", 3);
+		i++;
+	}
 	write(1, "\n", 1);
 }
 
-int		main(int ac, char **av)
+void		print_hex(char *line, long nb)
 {
-	int		fd;
-	char	*line;
-	char	temp[16];
-	int		bit_count;
-	int		tmp;
-	int		j;
-	int		i;
-
-	j = 1;
-	i = 0;
-	bit_count = 0;
-	while (++i < ac)
-	{
-		ft_putnbr_hex(bit_count);
-		line = (char *)malloc(16 * sizeof(char));
-		fd = open(av[i], O_RDONLY);
-		bit_count += read(fd, line, 16);
-		print_hex(line, bit_count);
-		while ((tmp = read(fd, temp, 16)))
-		{
-			temp[tmp] = '\0';
-			if (ft_strcmp(line, temp) || tmp < 16)
-			{
-				j = 1;
-				ft_putnbr_hex(bit_count);
-				free (line);
-				line = ft_strndup(temp, tmp);
-				print_hex(line, tmp);
-			}
-			else if (j)
-			{
-				j = 0;
-				write(1, "*\n", 2);
-			}
-			bit_count += tmp;
-		}
-		ft_putnbr_hex(bit_count);
-		write(1, "\n", 1);
-		close (fd);
-		free(line);
-	}
-	return (0);
+	ft_putnbr_hex(nb);
+	print_hexa(line);
+	if (nb == 0)
+		nb += ft_strlen(line);
 }

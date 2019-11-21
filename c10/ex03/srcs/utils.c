@@ -6,83 +6,76 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 15:31:59 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/18 20:25:02 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/19 20:58:05 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_hexdump.h"
 
-int	ft_strlen(char *str)
+int			ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (i);
 	while (str[i])
 		i++;
 	return (i);
 }
 
-int	ft_strcmp(char *sa, char *sb)
+int			ft_strncmp(char *s1, char *s2, unsigned int n)
 {
-	int	i;
+	unsigned int	i;
 
-	if (!sa && !sb)
-		return (0);
-	else if (!sb)
-		return (sa[0]);
-	else if (!sa)
-		return (-sb[0]);
 	i = 0;
-	while (sa[i] && sa[i] == sb[i])
+	if ((!s1 && !s2) || n == 0)
+		return (0);
+	if (!s1)
+		return (-s2[i]);
+	if (!s2)
+		return (s1[i]);
+	while (i < n - 1 && s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
-	return (sa[i] - sb[i]);
+	return (s1[i] - s2[i]);
 }
 
-static void	putnbr_hex(long nb, char *base)
+static void	error_message(char *file)
 {
-	if (nb < 16)
-		write(1, &base[nb], 1);
-	else if (nb > 0)
-	{
-		putnbr_hex(nb / 16, base);
-		putnbr_hex(nb % 16, base);
-	}
+	char	*str;
+
+	str = strerror(errno);
+	write(2, "hexdump: ", 9);
+	write(2, file, ft_strlen(file));
+	write(2, ": ", 2);
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
 }
 
-void		ft_putnbr_hex(long nb)
+int			check_fd(char *file, int i)
 {
-	int	size;
-	int	nbr;
+	int		fd;
+	char	c;
 
-	nbr = nb;
-	size = 1;
-	while (nb / 16)
+	errno = 0;
+	fd = open(file, O_RDONLY);
+	if (errno || fd < 0)
 	{
-		size++;
-		nb /= 16;
+		if (i)
+			error_message(file);
+		close(fd);
+		errno = 0;
+		return (0);
 	}
-	write(1, "0000000", 7 - size);
-	putnbr_hex(nbr, "0123456789abcdef");
-}
-
-char		*ft_strndup(char *src, int n)
-{
+	read(fd, &c, 1);
+	if (errno || fd < 0)
 	{
-		int		i;
-		char	*copy;
-
-		if (!src)
-			return (NULL);
-		i = 0;
-		if (!(copy = (char *)malloc((n + 1) * sizeof(char))))
-			return (NULL);
-		i = 0;
-		while (i < n)
-		{
-			copy[i] = src[i];
-			i++;
-		}
-		copy[i] = '\0';
-		return (copy);
+		if (i)
+			error_message(file);
+		close(fd);
+		errno = 0;
+		return (0);
 	}
+	close(fd);
+	return (1);
 }

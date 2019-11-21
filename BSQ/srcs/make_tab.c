@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 12:10:47 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/20 17:58:33 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:22:07 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ int			make_tab(int fd, t_map *map)
 	map->tab[i] = NULL;
 	if (fd && read(fd, &c, 1) >= 1)
 		return (free_tab(map->tab, i - 1, 1));
+	printf("%d\n", map->line_nbr);
 	return (1);
 }

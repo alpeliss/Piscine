@@ -1,5 +1,8 @@
 SRCDIR	= ./srcs/
-SRCNAME	= ft_hexdump.c utils.c
+SRCNAME	= 	ft_hexdump.c 		\
+			utils.c 			\
+			main.c 				\
+			check_and_delete.c	
 SRCS	= ${addprefix ${SRCDIR}, ${SRCNAME}}
 
 INCDIR	=./includes/

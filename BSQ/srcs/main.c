@@ -6,7 +6,7 @@
 /*   By: alpeliss <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 11:09:22 by alpeliss          #+#    #+#             */
-/*   Updated: 2019/11/20 16:52:41 by alpeliss         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:24:40 by alpeliss         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	print_and_free(t_map *map)
 	while (map->tab[i])
 	{
 		write(1, map->tab[i], ft_strlen(map->tab[i]));
-		i++;
 		free(map->tab[i]);
+		i++;
 	}
 	free(map->tab);
 	free(map);
